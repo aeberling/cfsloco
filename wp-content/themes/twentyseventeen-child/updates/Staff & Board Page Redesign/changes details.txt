@@ -1,0 +1,27 @@
+## Scope
+Redesign and combine the Staff and Board pages into a single, polished page featuring a professional grid layout with hover or click-to-reveal bios for each team member. The layout will be flexible enough to accommodate changes in staff and board membership over time. Do this work on a draft page.
+
+## Deliverables
+- Design a unified Staff & Board page with a clean, professional grid layout
+- Implement hover/click-to-reveal bio functionality for each person
+- Build a flexible layout that accommodates fluctuating team sizes (up to 15 members per section)
+- Display board member titles (Officer positions and Board Member designation) and locations
+- Include placeholder image support for members without photos
+
+## Staff Details
+- Photos displayed in grid layout
+- Hover-over or click reveals staff bio
+- Must accommodate approximately 13-15 people
+- Layout should not "break" when adding/removing staff members
+- More polished, "adult" aesthetic requested
+- Client will provide photos and bios
+
+## Board Details
+- Similar hover/click bio functionality as Staff section
+- Display board member position (4 officer positions, rest listed as "Board Member")
+- Include member location
+- Must accommodate up to 15 members
+- Some members may not have photos (use placeholder)
+
+## Reference
+- Design reference: [Housing Trust Silicon Valley staff/board page](https://housingtrustsv.org/about/staff-board/)

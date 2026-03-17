@@ -1,0 +1,12 @@
+## Section 3: Impact Bar (Footer Addition)
+**Scope:** Add a dynamic "Our Impact" metrics bar to the footer of every page.
+Keep design similar to CFSLOCO site but would look something like this:
+screenshot added
+**Details:**
+- Display key metrics: Net Assets, Grants, and other impact numbers
+- Design should match website aesthetics
+- Must be updateable from a single location (one update reflects across all pages)
+- Should be easy to edit
+- Reference example: Santa Barbara Community Foundation footer
+- Replaces the removed "How We Serve You" section location
+- Must work responsively on mobile

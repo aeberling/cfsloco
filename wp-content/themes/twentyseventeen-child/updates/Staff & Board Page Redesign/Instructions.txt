@@ -1,0 +1,4 @@
+Deign a new page name our Team. First you design a html/css reponsive page like in this design without sidebar(full-new-design-page screenshot.png)
+dont make all items just for testing 10 to 15 items. on click the popup will open the design of the popup like this(new-design-popup-screenshot-with-content.png)
+Make this design according to the dynamic content we will dynamic it later. I have added screenshots hover effect new design you can check it
+also read changes details file for help. 

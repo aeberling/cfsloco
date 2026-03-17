@@ -1,0 +1,33 @@
+# Ignore everything
+*
+
+# But not .gitignore itself
+!.gitignore
+
+# Allow wp-content/themes directory
+!wp-content/
+wp-content/*
+!wp-content/themes/
+!wp-content/themes/**
+
+# Only track twentyseventeen-child theme
+wp-content/themes/twentyseventeen/
+wp-content/themes/twentyseventeen-child-old/
+wp-content/themes/twentyseventeen-child-realestate/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE/editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Node/build tools (if used in theme dev)
+node_modules/
+vendor/
+.env

@@ -1,0 +1,153 @@
+============================================================
+ IMPACT BAR — DEPLOYMENT STEPS (Local to Live)
+ Section: "Our Impact" metrics bar above footer
+ Date: March 2, 2026
+============================================================
+
+OVERVIEW
+--------
+The "Our Impact" metrics bar is now DYNAMIC — all values are
+editable from WP Admin > Impact Bar Settings (ACF options page).
+This appears on every page of the site via the footer.
+
+
+FILES CHANGED
+-------------
+1. footer.php                    — Includes impact-bar.php template part
+2. functions.php                 — Added custom.css enqueue,
+                                   ACF options page registration,
+                                   ACF field group registration
+3. css/custom.css                — NEW FILE — All Impact Bar CSS styles
+4. template-parts/impact-bar.php — NEW FILE — Dynamic Impact Bar template
+                                   (pulls values from ACF options page)
+
+REQUIREMENT: ACF Pro plugin must be installed and active on the live site.
+
+NOTE: style.css was NOT changed. All new CSS lives in custom.css.
+
+
+STEP-BY-STEP DEPLOYMENT TO LIVE SITE
+--------------------------------------
+
+STEP 1: BACKUP LIVE FILES (CRITICAL)
+   - Download a copy of the LIVE files from:
+     /wp-content/themes/twentyseventeen-child/
+   - Files to backup:
+     * footer.php
+     * functions.php
+   - Save them in a safe backup folder with today's date
+
+STEP 2: VERIFY ACF PRO IS ACTIVE ON LIVE
+   - Go to WP Admin > Plugins on the live site
+   - Confirm "Advanced Custom Fields PRO" is installed and active
+   - If not active, activate it before proceeding
+
+STEP 3: TEST ON LOCAL SITE FIRST
+   - Open the local site in browser (via Local by Flywheel)
+   - Go to WP Admin > Impact Bar Settings
+   - Fill in all fields (title, 4 metrics, button text, button link)
+   - Save and check the frontend — values should update
+   - Clear fields and verify fallback defaults still display
+   - Check desktop, tablet, and mobile views
+
+STEP 4: UPLOAD NEW FILES
+   - Upload these two NEW files via SFTP/FTP:
+
+     a) css/custom.css
+        To: /wp-content/themes/twentyseventeen-child/css/custom.css
+
+     b) template-parts/impact-bar.php
+        To: /wp-content/themes/twentyseventeen-child/template-parts/impact-bar.php
+
+STEP 5: UPDATE functions.php ON LIVE SITE
+   - Upload the LOCAL functions.php to the LIVE server
+     Destination: /wp-content/themes/twentyseventeen-child/functions.php
+
+   Changes in functions.php:
+   a) custom.css enqueue added in theme_enqueue_styles()
+   b) "Impact Bar Settings" ACF options page registered in my_acf_op_init()
+   c) ACF field group registered via cfsloco_register_impact_bar_fields()
+
+STEP 6: UPDATE footer.php ON LIVE SITE
+   - Upload the LOCAL footer.php to the LIVE server
+     Destination: /wp-content/themes/twentyseventeen-child/footer.php
+
+STEP 7: CLEAR CACHES
+   - Clear any WordPress caching plugin cache
+     (WP Super Cache, W3 Total Cache, WP Rocket, etc.)
+   - Clear CDN cache if applicable (Cloudflare, etc.)
+   - Clear browser cache and hard-refresh the site (Ctrl+Shift+R)
+
+STEP 8: CONFIGURE IMPACT BAR ON LIVE SITE
+   - Go to WP Admin > Impact Bar Settings
+   - Fill in the fields:
+     * Section Title: "Our Impact"
+     * Add 4 metrics using the repeater (click "Add Metric"):
+       1. Number: 10,000  | Label: GRANTS GIVEN  | Description: ...
+       2. Number: $120M   | Label: GRANTED        | Description: ...
+       3. Number: 3,300   | Label: ORGANIZATIONS  | Description: ...
+       4. Number: $1.9B   | Label: COMBINED CHARITABLE ASSETS | Description: ...
+     * Button Text: "SEE OUR IMPACT"
+     * Button Link: /impact
+   - Click "Update" to save
+
+STEP 9: VERIFY ON LIVE SITE
+   - Check the homepage — Impact Bar should appear at top of footer
+   - Check 2-3 inner pages to confirm it shows everywhere
+   - Test on mobile device or browser dev tools responsive mode
+   - Verify all metric numbers display correctly
+   - Verify the CTA button links correctly
+
+
+UPDATING THE METRIC VALUES (ONGOING)
+--------------------------------------
+To update metric values at any time:
+1. Go to WP Admin > Impact Bar Settings
+2. Edit any field (numbers, labels, descriptions, button)
+3. Click "Update" to save
+4. Clear caches if needed
+5. Changes will be visible immediately on all pages
+
+No code editing required — everything is managed from the admin.
+
+
+ACF FIELDS REFERENCE
+---------------------
+Field Name                  | Type      | Description
+----------------------------|-----------|----------------------------------
+impact_bar_title            | Text      | Section heading ("Our Impact")
+impact_bar_metrics          | Repeater  | 1-6 metrics, each with:
+  > metric_number           | Text      |   Number inside circle
+  > metric_label            | Text      |   Bold label below circle
+  > metric_description      | Textarea  |   Description below label
+impact_bar_button_text      | Text      | CTA button text
+impact_bar_button_link      | URL       | CTA button link
+
+All fields fall back to hardcoded defaults if empty.
+
+
+ADDING IMPACT BAR TO OTHER PAGES
+----------------------------------
+The Impact Bar can be included on any template with:
+  <?php get_template_part('template-parts/impact-bar'); ?>
+
+
+ADDING FUTURE CSS CHANGES
+---------------------------
+All new custom CSS should be added to:
+  /wp-content/themes/twentyseventeen-child/css/custom.css
+
+This file is enqueued with time() version so changes are
+always visible immediately without manual cache-busting.
+Do NOT add new CSS to style.css — use custom.css instead.
+
+
+ROLLBACK PLAN
+--------------
+If something goes wrong:
+1. Replace footer.php with the backup from Step 1
+2. Replace functions.php with the backup from Step 1
+3. Delete css/custom.css from the server (optional)
+4. Delete template-parts/impact-bar.php from the server (optional)
+5. Clear all caches
+6. The site will be restored to its previous state

@@ -1,0 +1,835 @@
+/*
+ * CFSLOCO Custom CSS
+ * All new custom styles go here.
+ * Enqueued with time() version for automatic cache-busting.
+ */
+
+/* ============================================= */
+/* IMPACT BAR SECTION — "Our Impact" metrics bar */
+/* Uses #impact-bar id for high specificity      */
+/* ============================================= */
+
+/* Section wrapper — light gray-blue background matching screenshot */
+#impact-bar {
+    background-color: #dde3e8;
+    padding: 70px 20px 60px;
+    text-align: center;
+    font-size: 16px !important;
+    border-top: none;
+    box-sizing: border-box;
+}
+
+/* Inner container — max-width for readability */
+#impact-bar .impact-bar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Section title — light weight matching screenshot "Our Impact" */
+#impact-bar .impact-bar-title {
+    font-weight: 300;
+    color: #1a575d;
+    margin: 0 0 40px 0;
+    padding: 0;
+    letter-spacing: 2px;
+    text-transform: none;
+    line-height: 1.2;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+/* Metrics row — flexbox for equal spacing */
+#impact-bar .impact-bar-metrics {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 40px;
+    padding: 0;
+}
+
+/* Individual metric item */
+#impact-bar .impact-metric-item {
+    flex: 1 1 240px;
+    max-width: 310px;
+    text-align: center;
+    padding: 0 15px;
+    margin: 0;
+}
+
+/* Dotted circle around each number */
+#impact-bar .impact-metric-circle {
+    width: 210px;
+    height: 210px;
+    border: 2px dotted #c8a44e;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 22px;
+    padding: 0;
+    background: transparent;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hover effect on the dotted circle */
+#impact-bar .impact-metric-circle:hover {
+    transform: scale(1.05);
+    border-color: #1a575d;
+}
+
+/* Large metric number inside circle */
+#impact-bar .impact-metric-number {
+    font-family: 'Raleway', sans-serif;
+    font-size: 42px !important;
+    font-weight: 700;
+    color: #b15632;
+    line-height: 1;
+    display: inline;
+}
+
+/* Metric label below the circle — bold uppercase */
+#impact-bar .impact-metric-label {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px !important;
+    font-weight: 700;
+    color: #1a575d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 8px 0;
+    padding: 0;
+    line-height: 1.3;
+}
+
+/* Description text below label */
+#impact-bar .impact-metric-desc {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px !important;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+/* CTA button wrapper */
+#impact-bar .impact-bar-cta {
+    margin-top: 20px;
+    padding: 0;
+}
+
+/* CTA button — brown/rust color matching screenshot */
+#impact-bar .impact-bar-btn {
+    display: inline-block;
+    background-color: #b15632;
+    color: #fff !important;
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px !important;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* CTA button hover */
+#impact-bar .impact-bar-btn:hover {
+    background-color: #1a575d;
+    color: #fff !important;
+    text-decoration: none !important;
+    transform: translateY(-2px);
+}
+
+/* ============================================= */
+/* IMPACT BAR — Responsive / Mobile (max 768px)  */
+/* ============================================= */
+@media only screen and (max-width: 768px) {
+    #impact-bar {
+        padding: 40px 15px 35px;
+    }
+    #impact-bar .impact-bar-title {
+        font-size: 32px !important;
+        margin-bottom: 25px;
+    }
+    #impact-bar .impact-bar-metrics {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+    #impact-bar .impact-metric-item {
+        max-width: 260px;
+    }
+    #impact-bar .impact-metric-circle {
+        width: 150px;
+        height: 150px;
+    }
+    #impact-bar .impact-metric-number {
+        font-size: 34px !important;
+    }
+    #impact-bar .impact-metric-label {
+        font-size: 14px !important;
+    }
+    #impact-bar .impact-metric-desc {
+        font-size: 13px !important;
+    }
+}
+
+/* IMPACT BAR — Tablet (769px - 1024px) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    #impact-bar .impact-bar-metrics {
+        gap: 15px;
+    }
+    #impact-bar .impact-metric-item {
+        flex: 1 1 200px;
+        max-width: 240px;
+    }
+    #impact-bar .impact-metric-circle {
+        width: 155px;
+        height: 155px;
+    }
+    #impact-bar .impact-metric-number {
+        font-size: 36px !important;
+    }
+}
+/* END IMPACT BAR CSS */
+
+/* ============================================= */
+/* FOOTER SITEMAP — Dynamic menu from Header Menu */
+/* Matches existing .upper-footer-col styling      */
+/* ============================================= */
+
+/* Section wrapper — same background as existing footer */
+.footer-sitemap {
+    background-color: #f0e4da;
+    padding-top: 46px;
+    padding-bottom: 20px;
+}
+
+/* Flex container for columns */
+.footer-sitemap .container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Each column — matches .upper-footer-col */
+.footer-sitemap-col {
+    width: 10%;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 0.3%;
+}
+
+/* Footer logo column — wider, matches .footer-logo */
+.footer-sitemap .footer-logo {
+    width: 22%;
+    text-align: center;
+}
+
+/* List reset */
+.footer-sitemap-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* List items */
+.footer-sitemap-col li {
+    text-align: left;
+    line-height: 0.8em;
+    padding: 5px 0;
+}
+
+/* All links — italic, gray */
+.footer-sitemap-col li a {
+    font-size: 13px !important;
+    color: #4d4d4d;
+    font-style: italic;
+    font-weight: 500;
+    padding-right: 7px;
+    display: block;
+    text-decoration: none !important;
+    box-shadow: none !important;
+}
+
+/* Hover — simple underline */
+.footer-sitemap-col li a:hover {
+    text-decoration: underline !important;
+}
+
+/* Column heading — bold, black, non-italic */
+.footer-sitemap-col li.footer-sitemap-heading a {
+    font-style: normal;
+    color: #000;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+/* Quick Links widget heading — match bold style */
+.footer-sitemap-col .menu li:first-of-type a {
+    font-style: normal;
+    color: #000;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+/* ============================================= */
+/* FOOTER SITEMAP — Responsive / Mobile          */
+/* ============================================= */
+@media only screen and (max-width: 768px) {
+    .footer-sitemap-col {
+        width: 100%;
+        text-align: center;
+        margin: 20px 0;
+    }
+    .footer-sitemap-col li {
+        text-align: center;
+    }
+    .footer-sitemap .footer-logo {
+        width: 100%;
+    }
+}
+/* END FOOTER SITEMAP CSS */
+
+/* ================================================================= */
+/* >>>>>> START: OUR TEAM PAGE CSS <<<<<<                             */
+/* Copy everything between START and END to migrate to live site.    */
+/* ================================================================= */
+/* OUR TEAM PAGE — Staff & Board grid + popup    */
+/* Template: page-our-team.php                   */
+/* ============================================= */
+
+/* Full-width page wrapper — no sidebar */
+.our-team-page {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* Each section (Staff / Board) */
+.our-team-section {
+    padding: 60px 20px 40px;
+}
+
+/* Board section */
+.our-team-board-section {
+    background-color: #fff;
+    padding-bottom: 60px;
+}
+
+/* Inner container */
+.our-team-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Section title — "Meet our Staff" / "Board of Directors" */
+.our-team-section-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #133d42;
+    margin: 0 0 40px 0;
+    padding: 0;
+    text-align: left;
+}
+
+/* Grid — responsive 4-column layout */
+.our-team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 35px 30px;
+}
+
+/* Individual card */
+.our-team-card {
+    text-align: center;
+    cursor: pointer;
+    padding: 15px 10px 20px;
+    border-radius: 6px;
+    background: transparent;
+}
+
+/* Card image wrapper */
+.our-team-card-img {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow: hidden;
+    border-radius: 4px;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover shadow on photo image only */
+.our-team-card:hover .our-team-card-img {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+
+/* Disable popup interaction for members with no content */
+.our-team-card-no-popup {
+    cursor: default;
+}
+.our-team-card-no-popup:hover .our-team-card-img {
+    box-shadow: none;
+    transform: none;
+}
+
+/* Card photo — square aspect ratio */
+.our-team-card-img img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    border-radius: 4px;
+}
+
+/* Card name */
+.our-team-card-name {
+    font-family: 'Raleway', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: #1a575d;
+    margin: 0 0 6px 0;
+    padding: 0;
+    line-height: 1.3;
+}
+
+/* Card title / position */
+.our-team-card-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #b15632;
+    margin: 0;
+    padding: 0;
+    line-height: 1.4;
+    font-style: italic;
+}
+
+/* Card location & industry (Board members only) */
+.our-team-card-location {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #777;
+    margin: 4px 0 0 0;
+    padding: 0;
+    line-height: 1.3;
+}
+
+/* ============================================= */
+/* OUR TEAM — Popup Overlay                       */
+/* ============================================= */
+
+/* Gray overlay background with opacity */
+.our-team-popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(120, 120, 120, 0.7);
+    z-index: 99999;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.our-team-popup-overlay.active {
+    display: flex;
+}
+
+/* Popup box — centered overlay with border on all 4 sides */
+.our-team-popup {
+    display: none;
+    background: #fff;
+    width: 100%;
+    max-width: 1300px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999999;
+    border: 4px solid #1a575d;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+    min-height: 70vh;
+    max-height: 92vh;
+    overflow-y: auto;
+    animation: ourTeamPopupFade 0.3s ease;
+}
+
+.our-team-popup.active {
+    display: block;
+}
+
+@keyframes ourTeamPopupFade {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -48%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Inner content — two-column layout */
+.our-team-popup-inner {
+    display: flex;
+    gap: 40px;
+    padding: 45px 50px;
+    align-items: flex-start;
+}
+
+/* Left column — photo + email button */
+.our-team-popup-left {
+    flex: 0 0 230px;
+    width: 230px;
+}
+
+/* Photo — square */
+.our-team-popup-img img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+}
+
+/* EMAIL button — full width matching photo */
+.our-team-popup-email {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 18px 0;
+    background-color: #b15632;
+    color: #fff !important;
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    border: none;
+    box-shadow: none !important;
+    box-sizing: border-box;
+}
+
+.our-team-popup-email:hover {
+    background-color: #933e24;
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+.our-team-popup-phone {
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    color: #333;
+    margin: 5px 0 15px;
+}
+
+/* Right column */
+.our-team-popup-right {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Header row — name/title on left, X on right */
+.our-team-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 22px;
+}
+
+.our-team-popup-header-text {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Name — larger size */
+.our-team-popup-name {
+    font-family: 'Raleway', sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #1a575d;
+    margin: 0 0 10px 0;
+    padding: 0;
+    line-height: 1.2;
+}
+
+/* Pronouns — popup only, subtle italic text */
+.our-team-popup-pronouns {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-style: italic;
+    color: #888;
+    margin: 2px 0 8px 0;
+    padding: 0;
+}
+
+/* Title — larger with gap from name */
+.our-team-popup-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #b15632;
+    margin: 0;
+    padding: 0;
+    font-style: italic;
+}
+
+/* Industry — popup */
+.our-team-popup-industry {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    color: #555;
+    margin: 3px 0 0 0;
+    padding: 0;
+}
+
+/* Location — popup */
+.our-team-popup-location {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    color: #555;
+    margin: 3px 0 10px 0;
+    padding: 0;
+}
+
+/* Close X button — always top-right of popup */
+.our-team-popup-close,
+.our-team-popup .our-team-popup-close,
+button.our-team-popup-close {
+    position: absolute !important;
+    top: 15px !important;
+    right: 25px !important;
+    background: none !important;
+    background-color: transparent !important;
+    border: none !important;
+    font-size: 48px !important;
+    font-weight: 800 !important;
+    color: #1a575d !important;
+    cursor: pointer;
+    line-height: 1 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    box-shadow: none !important;
+    outline: none !important;
+    text-shadow: none !important;
+    z-index: 10;
+}
+
+.our-team-popup-close:hover,
+.our-team-popup-close:focus,
+.our-team-popup-close:active,
+button.our-team-popup-close:hover,
+button.our-team-popup-close:focus,
+button.our-team-popup-close:active {
+    color: #1a575d !important;
+    background: none !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* Bio text */
+.our-team-popup-bio {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    color: #444;
+    line-height: 1.8;
+}
+
+.our-team-popup-bio p {
+    margin: 0 0 15px 0;
+}
+
+.our-team-popup-bio p:last-child {
+    margin-bottom: 0;
+}
+
+/* ============================================= */
+/* OUR TEAM — Responsive / Tablet (max 1024px)   */
+/* ============================================= */
+@media only screen and (max-width: 1024px) {
+    .our-team-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px 20px;
+    }
+
+    .our-team-section-title {
+        font-size: 30px;
+    }
+
+    .our-team-popup {
+        max-width: 90vw;
+    }
+
+    .our-team-popup-inner {
+        padding: 30px 25px;
+        gap: 25px;
+    }
+
+    .our-team-popup-left {
+        flex: 0 0 190px;
+        width: 190px;
+    }
+
+    .our-team-popup-name {
+        font-size: 28px;
+    }
+
+    .our-team-popup-title {
+        font-size: 16px;
+    }
+
+    .our-team-popup-pronouns {
+        font-size: 13px;
+    }
+
+    .our-team-popup-industry {
+        font-size: 14px;
+    }
+}
+
+/* ============================================= */
+/* OUR TEAM — Responsive / Mobile (max 768px)    */
+/* ============================================= */
+@media only screen and (max-width: 768px) {
+    .our-team-section {
+        padding: 40px 15px 30px;
+    }
+
+    .our-team-section-title {
+        font-size: 26px;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .our-team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 15px;
+    }
+
+    .our-team-card {
+        padding: 10px 8px 15px;
+    }
+
+    .our-team-card-name {
+        font-size: 17px;
+    }
+
+    .our-team-card-title {
+        font-size: 14px;
+    }
+
+    /* Popup — stacked layout on mobile */
+    .our-team-popup {
+        max-width: 95vw;
+        max-height: 85vh;
+    }
+
+    .our-team-popup-inner {
+        flex-direction: column;
+        padding: 25px 20px;
+        gap: 20px;
+    }
+
+    .our-team-popup-left {
+        flex: none;
+        width: 180px;
+        margin: 0 auto;
+    }
+
+    .our-team-popup-name {
+        font-size: 22px;
+        margin-bottom: 6px;
+    }
+
+    .our-team-popup-title {
+        font-size: 15px;
+    }
+
+    .our-team-popup-pronouns {
+        font-size: 12px;
+    }
+
+    .our-team-popup-industry {
+        font-size: 13px;
+    }
+
+    .our-team-popup-bio {
+        font-size: 14px;
+    }
+}
+
+/* ============================================= */
+/* OUR TEAM — Small Mobile (max 480px)           */
+/* ============================================= */
+@media only screen and (max-width: 480px) {
+    .our-team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px 10px;
+    }
+
+    .our-team-card {
+        padding: 8px 6px 12px;
+    }
+
+    .our-team-card-name {
+        font-size: 15px;
+    }
+
+    .our-team-card-title {
+        font-size: 13px;
+    }
+
+    .our-team-card-location {
+        font-size: 11px;
+    }
+
+    .our-team-popup-pronouns {
+        font-size: 11px;
+    }
+
+    .our-team-popup-industry {
+        font-size: 12px;
+    }
+
+    .our-team-popup-left {
+        width: 150px;
+    }
+
+    .our-team-popup-close {
+        font-size: 26px;
+    }
+
+    .our-team-popup-inner {
+        padding: 20px 15px;
+    }
+
+    .our-team-popup-name {
+        font-size: 20px;
+    }
+}
+
+/* ================================================================= */
+/* >>>>>> END: OUR TEAM PAGE CSS <<<<<<                              */
+/* ================================================================= */

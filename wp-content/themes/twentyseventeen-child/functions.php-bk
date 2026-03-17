@@ -1,0 +1,550 @@
+<?php
+add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
+
+function theme_enqueue_styles() {
+    wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
+    wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', array('parent-style')
+    );
+}
+
+add_theme_support('post-thumbnails');
+
+function custom_widgets_init() {
+    register_sidebar(array(
+        'name' => __('Header Logo', 'cfsloco'),
+        'id' => 'header-logo1',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Header Social-Icons', 'cfsloco'),
+        'id' => 'header-social-icons',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Header Top buttons', 'cfsloco'),
+        'id' => 'header-top-buttons',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Logo', 'cfsloco'),
+        'id' => 'footer-logo',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer About us', 'cfsloco'),
+        'id' => 'footer-aboutus',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Donors', 'cfsloco'),
+        'id' => 'footer-donors',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Advisors', 'cfsloco'),
+        'id' => 'footer-advisors',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Non Profits', 'cfsloco'),
+        'id' => 'footer-nonprofits',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Students', 'cfsloco'),
+        'id' => 'footer-students',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Impact', 'cfsloco'),
+        'id' => 'footer-impact',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Quick Links', 'cfsloco'),
+        'id' => 'footer-quicklinks',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Copyrights', 'cfsloco'),
+        'id' => 'footer-copyrights',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Address', 'cfsloco'),
+        'id' => 'footer-address',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Address', 'cfsloco'),
+        'id' => 'footer-address',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Contact Info', 'cfsloco'),
+        'id' => 'footer-contactinfo',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Socialicons', 'cfsloco'),
+        'id' => 'footer-socialicons',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer newsletter signup', 'cfsloco'),
+        'id' => 'footer-newsletter-signup',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Bottom Links', 'cfsloco'),
+        'id' => 'footer-bottomlinks',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('footer Accredited Logo', 'cfsloco'),
+        'id' => 'Accredited-Logo',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Connect with us sticky heidi', 'cfsloco'),
+        'id' => 'sidebar1',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Connect with us sticky annie', 'cfsloco'),
+        'id' => 'connect-alt',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+
+    register_sidebar(array(
+        'name' => __('connect with us sticky 2', 'cfsloco'), //trish
+        'id' => 'connect with us sticky 2',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+
+    register_sidebar(array(
+        'name' => __('connect with us sticky 3', 'cfsloco'), //len
+        'id' => 'connect with us sticky 3',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('connect with us sticky 4', 'cfsloco'), // angela
+        'id' => 'connect with us sticky 4',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('News & Events featured Image', 'cfsloco'),
+        'id' => 'newsevents',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('popup newsletter signup header', 'cfsloco'),
+        'id' => 'popup-newsletter-signup-header',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+}
+
+add_action('widgets_init', 'custom_widgets_init');
+
+function register_my_menu() {
+    register_nav_menu('header-menu', __('Header Menu'));
+    register_nav_menu('top-menu', __('Top Menu Links'));
+}
+
+add_action('init', 'register_my_menu');
+
+//Shortcode Image Left And right text with bullets and button
+function section_image_bullets($atts = '') {
+    $attributes = shortcode_atts(array(
+        'section' => 0,
+            ), $atts);
+    ob_start();
+    ?>
+    </div></div>
+    </div>
+    <?php
+    if ($attributes['section'] === 'large') {
+        echo '<div class="section-large">';
+    }
+    ?>
+    <div class="overflow">
+        <div class="full-with-image image-text-align">
+            <div class="rvl-left col-md-5 full-with-image-left rvl-left padding0">
+                <img src="<?php echo get_field("client_image"); ?>"/>
+                <div class="clearfix"></div>
+
+                <div class="col-md-offset-2 col-md-10 img-caption">
+                    <a href="#"><?php echo get_field("help_client_image_caption"); ?></a>
+                </div>
+            </div>
+            <div class="rvl-right col-md-7 full-with-image-right rvl-right">
+                <div class="col-md-10 custom-padding">
+                    <h3><?php echo get_field("help_client_title"); ?></h3>
+                    <div class="right-side-img-ul">
+                        <ul>
+                            <?php
+// check if the repeater field has rows of data
+                            if (have_rows('reasons_list')):
+
+                                // loop through the rows of data
+                                while (have_rows('reasons_list')) : the_row();
+                                    ?>
+
+                                    <li><strong><?php
+                                            $bullet_title = the_sub_field('client_list_title');
+
+                                            if (!empty($bullet_title)) {
+                                                echo the_sub_field('client_list_title') . ':';
+                                            }
+                                            ?></strong>  <?php echo the_sub_field('client_list_description'); ?> </li>
+                                    <?php
+                                endwhile;
+
+                            else :
+
+                            // no rows found
+
+                            endif;
+                            ?>
+                        </ul>
+                    </div>
+                    <a class="learn-more-link bottom-left-link" href="<?php echo get_field("clients_button_link"); ?>"><?php echo get_field("clients_button_name"); ?></a>
+                </div>
+            </div>
+            <div class="clearfix"></div>    
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <?php
+    if ($attributes['section'] === 'large') {
+        echo '</div>';
+    }
+    ?>
+    <div class="row">
+        <div class="container">
+            <div id="content" class="site-content">
+
+
+
+                <?php
+                $content = ob_get_contents();
+                ob_end_clean();
+                return $content;
+            }
+
+            add_shortcode('section-image-bullets', 'section_image_bullets');
+
+            function custom_excerpt_length($length) {
+                return 25;
+            }
+
+//            add_filter('excerpt_length', 'custom_excerpt_length', 999);
+            add_filter('gform_pre_render', 'my_gform_pre_render', 10, 1);
+            add_filter('gform_pre_validation', 'my_gform_pre_render', 10, 1);
+            add_filter('gform_admin_pre_render', 'my_gform_pre_render', 10, 1);
+            add_filter('gform_pre_submission_filter', 'my_gform_pre_render', 10, 1);
+
+            function my_gform_pre_render($form) {
+                if (GFCommon::is_form_editor() || 1 != $form['id']) {
+                    return $form;
+                }
+                $choices = array();
+                if (is_array($form) || is_object($form)) {
+                    $query = new WP_Query(array('post_type' => 'funds'));
+//                    foreach ($query->posts as $p) {
+//                        $choices .= $p->post_title . ", ";
+//                    }
+                    foreach ($form['fields'] as &$field) {  // for all form fields
+                        $field_id = $field['id'];
+                        if ('select' == $field->get_input_type()) {
+                            foreach ($query->posts as $post) {
+                                $choices[] = array('text' => $post->post_title, 'value' => $post->post_title);
+                            }
+//                            $has_columns = is_array($field->choices);
+////                            print_r($field->choices);
+////                            if ($has_columns) {
+//                            foreach ($field->choices as $key => &$choice) { // for each column
+//                                print_r($choice['isDropDownChoices']);
+////                                    $isDropDown = rgar($choice, 'isDropDown');
+////                                    $column = rgars($field->choices, "{$key}/text");
+////                                    if ($isDropDown && 'Select a Fund' == $column) {
+////                                        
+////                                        $choice['isDropDownChoices'] = $choices;
+////                                    }
+//                            }
+//                            }
+                        }
+                    }
+                }
+                return $form;
+            }
+
+//            
+            add_filter('gform_pre_render_1', 'color_posts');
+            add_filter('gform_pre_validation_1', 'color_posts');
+            add_filter('gform_pre_submission_filter_1', 'color_posts');
+            add_filter('gform_admin_pre_render_1', 'color_posts');
+
+            function color_posts($form) {
+
+                foreach ($form['fields'] as &$field) {
+                    if ($field->type != 'select' || strpos($field->cssClass, 'gf_left_third funds') === false) {
+                        continue;
+                    }
+                    // you can add additional parameters here to alter the posts that are retrieved
+                    // more info: [http://codex.wordpress.org/Template_Tags/get_posts](http://codex.wordpress.org/Template_Tags/get_posts)
+                    $args = array('post_type' => 'funds', 'posts_per_page' => -1, 'numberposts' => -1, 'order' => 'ASC');
+                    $posts = get_posts($args);
+                    $choices = array();
+
+                    foreach ($posts as $post) {
+                        $choices[] = array('text' => $post->post_title, 'value' => $post->post_title);
+                    }
+
+                    // update 'Select a Post' to whatever you'd like the instructive option to be
+                    $field->placeholder = 'Select a Fund';
+                    $field->choices = $choices;
+                }
+
+                return $form;
+            }
+
+            add_action('gform_pre_submission', 'pre_submission_handler');
+
+//
+            function pre_submission_handler($form) {
+                unset($_POST['input_80']);
+                unset($_POST['input_83']);
+                unset($_POST['input_88']);
+                unset($_POST['input_92']);
+                unset($_POST['input_96']);
+                unset($_POST['input_100']);
+                unset($_POST['input_103']);
+                unset($_POST['input_108']);
+                $funds = [];
+                foreach ($form['fields'] as &$field) {
+                    if (!empty($_POST['input_73'])) {
+                        if ($field->id == 69) {
+                            $field->label = $_POST['input_73'];
+                        }
+                    }
+                    if (!empty($_POST['input_75'])) {
+                        if ($field->id == 74) {
+                            $field->label = $_POST['input_75'];
+                        }
+                    }
+                    if (!empty($_POST['input_81'])) {
+                        if ($field->id == 82) {
+                            $field->label = $_POST['input_81'];
+                        }
+                    }
+                    if (!empty($_POST['input_85'])) {
+                        if ($field->id == 86) {
+                            $field->label = $_POST['input_85'];
+                        }
+                    }
+                    if (!empty($_POST['input_89'])) {
+                        if ($field->id == 74) {
+                            $field->label = $_POST['input_90'];
+                        }
+                    }
+                    if (!empty($_POST['input_93'])) {
+                        if ($field->id == 74) {
+                            $field->label = $_POST['input_94'];
+                        }
+                    }
+                    if (!empty($_POST['input_97'])) {
+                        if ($field->id == 98) {
+                            $field->label = $_POST['input_97'];
+                        }
+                    }
+                    if (!empty($_POST['input_101'])) {
+                        if ($field->id == 102) {
+                            $field->label = $_POST['input_101'];
+                        }
+                    }
+                    if (!empty($_POST['input_105'])) {
+                        if ($field->id == 106) {
+                            $field->label = $_POST['input_105'];
+                        }
+                    }
+                    if (!empty($_POST['input_109'])) {
+                        if ($field->id == 110) {
+                            $field->label = $_POST['input_109'];
+                        }
+                    }
+                }
+//                echo "------------<pre>"; print_r($form);echo "</pre>";exit;
+            }
+
+            add_filter('gform_entry_field_value', 'category_names', 10, 4);
+
+//            add_filter( 'gform_entry_field_value', 'category_names', 10, 4 );
+            function category_names($value, $field, $lead, $form) {
+                foreach ($form['fields'] as &$field) {
+                    if (!empty($_POST['input_73'])) {
+                        if ($field->id == 73) {
+                            $field->label = 'test';
+                        }
+                    }
+                    if (!empty($_POST['input_75'])) {
+                        if ($field->id == 74) {
+                            $field->label = $_POST['input_75'];
+                        }
+                    }
+                    if (!empty($_POST['input_81'])) {
+                        if ($field->id == 82) {
+                            $field->label = $_POST['input_81'];
+                        }
+                    }
+                    if (!empty($_POST['input_85'])) {
+                        if ($field->id == 86) {
+                            $field->label = $_POST['input_85'];
+                        }
+                    }
+                    if (!empty($_POST['input_89'])) {
+                        if ($field->id == 74) {
+                            $field->label = $_POST['input_90'];
+                        }
+                    }
+                    if (!empty($_POST['input_93'])) {
+                        if ($field->id == 74) {
+                            $field->label = $_POST['input_94'];
+                        }
+                    }
+                    if (!empty($_POST['input_97'])) {
+                        if ($field->id == 98) {
+                            $field->label = $_POST['input_97'];
+                        }
+                    }
+                    if (!empty($_POST['input_101'])) {
+                        if ($field->id == 102) {
+                            $field->label = $_POST['input_101'];
+                        }
+                    }
+                    if (!empty($_POST['input_105'])) {
+                        if ($field->id == 106) {
+                            $field->label = $_POST['input_105'];
+                        }
+                    }
+                    if (!empty($_POST['input_109'])) {
+                        if ($field->id == 110) {
+                            $field->label = $_POST['input_109'];
+                        }
+                    }
+                }
+                return $value;
+//                if ($form['id'] != 104 || $field->id != 3)
+//                    return $value;
+//
+//                $newvalue = "";
+//                $categories = explode(',', $value);
+//
+//                foreach ($categories as $category) {
+//                    $new_value .= '<li>' . get_cat_name($category) . '</li>';
+//                }
+//
+//                return '<ul>' . $new_value . '</ul>';
+            }
+
+            //          
+            function my_custom_admin_head() {
+                echo '<script type="text/javascript">
+                
+                        jQuery(document).ready(function($){
+                        var funds=[];
+                            $(".entry-detail-view >tbody tr").each(function(){
+                            if($(this).html().indexOf("Select a Fund") >-1){
+                                funds.push($(this).next("tr").children("td").html());
+                            }
+                             });
+                             console.log(funds);
+                             var i=0;
+                             $(".entry-products tbody tr").each(function(){
+                                $(this).children("td").children(".product_name").html(funds[i]);
+                             i++;
+                             });
+                        });
+                      </script>';
+            }
+
+            add_action('admin_footer', 'my_custom_admin_head');
+            

@@ -1,0 +1,150 @@
+============================================================
+ FOOTER SITEMAP UPDATE — DEPLOYMENT STEPS (Local to Live)
+ Dynamic footer sitemap powered by Header Menu
+ Date: March 2, 2026
+============================================================
+
+OVERVIEW
+--------
+Added a new dynamic footer sitemap section that automatically
+pulls columns from the Header Menu. When the main menu is
+updated in WP Admin > Menus, the footer updates automatically.
+
+The existing old footer (widget-based columns) is still in
+place for comparison. Once approved, the old section can be
+removed.
+
+Logo and Quick Links sidebars remain unchanged (still widgets).
+
+
+FILES CHANGED
+-------------
+1. functions.php                      — Added Footer_Sitemap_Walker class
+                                        (custom walker for footer column layout)
+2. footer.php                         — Added include for footer-sitemap template
+3. template-parts/footer-sitemap.php  — NEW FILE — Dynamic footer sitemap template
+4. css/custom.css                     — Added footer sitemap CSS styles
+
+NOTE: No existing code was removed or modified. All changes are additive.
+
+
+STEP-BY-STEP DEPLOYMENT TO LIVE SITE
+--------------------------------------
+
+STEP 1: BACKUP LIVE FILES (CRITICAL)
+   - Download copies of the LIVE files from:
+     /wp-content/themes/twentyseventeen-child/
+   - Files to backup:
+     * footer.php
+     * functions.php
+     * css/custom.css
+   - Save them in a safe backup folder with today's date
+
+STEP 2: TEST ON LOCAL SITE FIRST
+   - Open the local site in browser (via Local by Flywheel)
+   - Verify the new dynamic footer sitemap displays correctly
+   - Compare it with the old widget-based footer below it
+   - Test: go to WP Admin > Menus > Header Menu, add/remove an
+     item, save — the new footer section should update automatically
+   - Check desktop and mobile views
+
+STEP 3: UPLOAD NEW FILE
+   - Upload via SFTP/FTP:
+
+     template-parts/footer-sitemap.php
+     To: /wp-content/themes/twentyseventeen-child/template-parts/footer-sitemap.php
+
+STEP 4: UPDATE functions.php ON LIVE SITE
+   - Upload the LOCAL functions.php to the LIVE server
+     Destination: /wp-content/themes/twentyseventeen-child/functions.php
+
+   What was added:
+   - Footer_Sitemap_Walker class (after register_my_menu function)
+     This class renders the Header Menu as footer columns:
+     * Top-level items = bold column headers
+     * Child items = italic sub-links
+
+STEP 5: UPDATE footer.php ON LIVE SITE
+   - Upload the LOCAL footer.php to the LIVE server
+     Destination: /wp-content/themes/twentyseventeen-child/footer.php
+
+   What was added:
+   - One line after the impact-bar include:
+     <?php get_template_part('template-parts/footer-sitemap'); ?>
+
+STEP 6: UPDATE css/custom.css ON LIVE SITE
+   - Upload the LOCAL custom.css to the LIVE server
+     Destination: /wp-content/themes/twentyseventeen-child/css/custom.css
+
+   What was added:
+   - .footer-sitemap section wrapper (background, padding)
+   - .footer-sitemap-col column layout (flexbox, 10% width per column)
+   - Column headers: bold, black, non-italic
+   - Sub-links: italic, gray (#4d4d4d), 13px
+   - Hover effect: simple text-decoration underline on links
+   - Logo column: 22% width (matches existing)
+   - Quick Links heading: bold style matching other column headers
+   - Mobile responsive: columns stack vertically on 768px and below
+
+STEP 7: CLEAR CACHES
+   - Clear WordPress caching plugin cache
+     (WP Super Cache, W3 Total Cache, WP Rocket, etc.)
+   - Clear CDN cache if applicable (Cloudflare, etc.)
+   - Clear browser cache and hard-refresh (Ctrl+Shift+R)
+
+STEP 8: VERIFY ON LIVE SITE
+   - Check homepage — new dynamic footer sitemap should appear
+     between the Impact Bar and the old widget footer
+   - Verify columns match the Header Menu structure
+   - Verify logo displays on the left
+   - Verify Quick Links displays on the right
+   - Test on mobile — columns should stack vertically
+   - Test: update Header Menu in admin — footer should reflect changes
+
+
+HOW IT WORKS
+-------------
+The Header Menu in WP Admin > Menus is the single source of truth:
+
+  Header Menu Structure:          Footer Sitemap Output:
+  ─────────────────────           ──────────────────────
+  About Us                   →    About Us (bold header)
+    ├─ Board of Directors    →      Board of Directors (italic link)
+    ├─ Finance & Investment  →      Finance & Investment (italic link)
+    └─ Publications          →      Publications (italic link)
+  Donors                     →    Donors (bold header)
+    ├─ Giving Options        →      Giving Options (italic link)
+    └─ Donor Stories         →      Donor Stories (italic link)
+  ... etc.
+
+Top-level items become column headers.
+Child items become sub-links below each header.
+Only 2 levels deep (parents + children).
+
+
+REMOVING THE OLD FOOTER (AFTER APPROVAL)
+------------------------------------------
+Once the client approves the new dynamic footer, the old
+widget-based footer can be removed:
+
+1. In footer.php, delete the entire <div class="upper-footer">...</div> block
+   (the section with all the dynamic_sidebar() calls)
+2. Optionally remove the old sidebar registrations from functions.php:
+   - footer-aboutus, footer-donors, footer-advisors,
+     footer-nonprofits, footer-students, footer-impact
+   (Keep footer-logo and footer-quicklinks — still in use)
+3. Clear caches
+
+Do NOT remove the old footer until the client has compared
+both versions and confirmed they want the new one.
+
+
+ROLLBACK PLAN
+--------------
+If something goes wrong:
+1. Replace footer.php with the backup from Step 1
+2. Replace functions.php with the backup from Step 1
+3. Replace css/custom.css with the backup from Step 1
+4. Delete template-parts/footer-sitemap.php (optional)
+5. Clear all caches
+6. The site will be restored to its previous state

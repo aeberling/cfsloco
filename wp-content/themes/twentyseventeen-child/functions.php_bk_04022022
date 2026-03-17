@@ -1,0 +1,928 @@
+<?php
+add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
+
+function theme_enqueue_styles() {
+    wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
+    wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', array('parent-style')
+    );
+}
+
+add_theme_support('post-thumbnails');
+
+function custom_widgets_init() {
+    register_sidebar(array(
+        'name' => __('Header Logo', 'cfsloco'),
+        'id' => 'header-logo1',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>', 
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Header Social-Icons', 'cfsloco'),
+        'id' => 'header-social-icons',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Header Top buttons', 'cfsloco'),
+        'id' => 'header-top-buttons',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Logo', 'cfsloco'),
+        'id' => 'footer-logo',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer About us', 'cfsloco'),
+        'id' => 'footer-aboutus',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Donors', 'cfsloco'),
+        'id' => 'footer-donors',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Donation sidebar Content', 'cfsloco'),
+        'id' => 'donation-sidebar-content',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>', 
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Advisors', 'cfsloco'),
+        'id' => 'footer-advisors',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Non Profits', 'cfsloco'),
+        'id' => 'footer-nonprofits',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Students', 'cfsloco'),
+        'id' => 'footer-students',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Impact', 'cfsloco'),
+        'id' => 'footer-impact',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Quick Links', 'cfsloco'),
+        'id' => 'footer-quicklinks',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Copyrights', 'cfsloco'),
+        'id' => 'footer-copyrights',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Address', 'cfsloco'),
+        'id' => 'footer-address',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    // register_sidebar(array(
+    //     'name' => __('Footer Address', 'cfsloco'),
+    //     'id' => 'footer-address',
+    //     'before_widget' => '<div>',
+    //     'after_widget' => '</div>',
+    //     'before_title' => '<h1>',
+    //     'after_title' => '</h1>',
+    // ));
+    register_sidebar(array(
+        'name' => __('Footer Contact Info', 'cfsloco'),
+        'id' => 'footer-contactinfo',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Socialicons', 'cfsloco'),
+        'id' => 'footer-socialicons',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer newsletter signup', 'cfsloco'),
+        'id' => 'footer-newsletter-signup',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer Bottom Links', 'cfsloco'),
+        'id' => 'footer-bottomlinks',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('footer Accredited Logo', 'cfsloco'),
+        'id' => 'Accredited-Logo',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Connect with us sticky heidi', 'cfsloco'),
+        'id' => 'sidebar1',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Connect with us sticky annie', 'cfsloco'),
+        'id' => 'connect-alt',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+
+    register_sidebar(array(
+        'name' => __('connect with us sticky 2', 'cfsloco'), //trish
+        'id' => 'connect with us sticky 2',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+
+    register_sidebar(array(
+        'name' => __('connect with us sticky 3', 'cfsloco'), //len
+        'id' => 'connect with us sticky 3',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('connect with us sticky 4', 'cfsloco'), // angela
+        'id' => 'connect with us sticky 4',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('News & Events featured Image', 'cfsloco'),
+        'id' => 'newsevents',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('popup newsletter signup header', 'cfsloco'),
+        'id' => 'popup-newsletter-signup-header',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<h1>',
+        'after_title' => '</h1>',
+    ));
+    register_sidebar(array(
+        'name' => __('Ways to Give', 'cfsloco'),
+        'id' => 'ways-to-give',
+        'before_widget' => '<div>',
+        'after_widget' => '</div>',
+        'before_title' => '<div class="funds-subttile col-md-12 give_now_title">
+        <h3>',
+        'after_title' => '</h3></div>',
+    ));
+   
+}
+
+add_action('widgets_init', 'custom_widgets_init');
+
+function register_my_menu() {
+    register_nav_menu('header-menu', __('Header Menu'));
+    register_nav_menu('top-menu', __('Top Menu Links'));
+}
+
+add_action('init', 'register_my_menu');
+
+//Shortcode Image Left And right text with bullets and button
+function section_image_bullets($atts = '') {
+    $attributes = shortcode_atts(array(
+        'section' => 0,
+            ), $atts);
+    ob_start();
+    ?>
+    </div></div>
+    </div>
+    <?php
+    if ($attributes['section'] === 'large') {
+        echo '<div class="section-large">';
+    }
+    ?>
+    <div class="overflow">
+        <div class="full-with-image image-text-align">
+            <div class="rvl-left col-md-5 full-with-image-left rvl-left padding0">
+                <img src="<?php echo get_field("client_image"); ?>"/>
+                <div class="clearfix"></div>
+
+                <div class="col-md-offset-2 col-md-10 img-caption">
+                    <a href="#"><?php echo get_field("help_client_image_caption"); ?></a>
+                </div>
+            </div>
+            <div class="rvl-right col-md-7 full-with-image-right rvl-right">
+                <div class="col-md-10 custom-padding">
+                    <h3><?php echo get_field("help_client_title"); ?></h3>
+                    <div class="right-side-img-ul">
+                        <ul>
+                            <?php
+// check if the repeater field has rows of data
+                            if (have_rows('reasons_list')):
+
+                                // loop through the rows of data
+                                while (have_rows('reasons_list')) : the_row();
+                                    ?>
+
+                                    <li><strong><?php
+                                            $bullet_title = the_sub_field('client_list_title');
+
+                                            if (!empty($bullet_title)) {
+                                                echo the_sub_field('client_list_title') . ':';
+                                            }
+                                            ?></strong>  <?php echo the_sub_field('client_list_description'); ?> </li>
+                                    <?php
+                                endwhile;
+
+                            else :
+
+                            // no rows found
+
+                            endif;
+                            ?>
+                        </ul>
+                    </div>
+                    <a class="learn-more-link bottom-left-link" href="<?php echo get_field("clients_button_link"); ?>"><?php echo get_field("clients_button_name"); ?></a>
+                </div>
+            </div>
+            <div class="clearfix"></div>    
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <?php
+    if ($attributes['section'] === 'large') {
+        echo '</div>';
+    }
+    ?>
+    <div class="row">
+        <div class="container">
+            <div id="content" class="site-content">
+
+
+
+                <?php
+                $content = ob_get_contents();
+                ob_end_clean();
+                return $content;
+            }
+
+            add_shortcode('section-image-bullets', 'section_image_bullets');
+
+            function custom_excerpt_length($length) {
+                return 25;
+            }
+
+//            add_filter('excerpt_length', 'custom_excerpt_length', 999);
+            add_filter('gform_pre_render', 'my_gform_pre_render', 10, 1);
+            add_filter('gform_pre_validation', 'my_gform_pre_render', 10, 1);
+            add_filter('gform_admin_pre_render', 'my_gform_pre_render', 10, 1);
+            add_filter('gform_pre_submission_filter', 'my_gform_pre_render', 10, 1);
+
+            function my_gform_pre_render($form) {
+                if (GFCommon::is_form_editor() || 1 != $form['id']) {
+                    return $form;
+                }
+                $choices = array();
+                if (is_array($form) || is_object($form)) {
+                    $query = new WP_Query(array('post_type' => 'funds'));
+//                    foreach ($query->posts as $p) {
+//                        $choices .= $p->post_title . ", ";
+//                    }
+                    foreach ($form['fields'] as &$field) {  // for all form fields
+                        $field_id = $field['id'];
+                        if ('select' == $field->get_input_type()) {
+                            foreach ($query->posts as $post) {
+                                $choices[] = array('text' => $post->post_title, 'value' => $post->post_title);
+                            }
+//                            $has_columns = is_array($field->choices);
+////                            print_r($field->choices);
+////                            if ($has_columns) {
+//                            foreach ($field->choices as $key => &$choice) { // for each column
+//                                print_r($choice['isDropDownChoices']);
+////                                    $isDropDown = rgar($choice, 'isDropDown');
+////                                    $column = rgars($field->choices, "{$key}/text");
+////                                    if ($isDropDown && 'Select a Fund' == $column) {
+////                                        
+////                                        $choice['isDropDownChoices'] = $choices;
+////                                    }
+//                            }
+//                            }
+                        }
+                    }
+                }
+                return $form;
+            }
+
+//            
+            add_filter('gform_pre_render_1', 'color_posts');
+            add_filter('gform_pre_validation_1', 'color_posts');
+            add_filter('gform_pre_submission_filter_1', 'color_posts');
+            add_filter('gform_admin_pre_render_1', 'color_posts');
+            add_filter('gform_pre_render_6', 'color_posts');
+            add_filter('gform_pre_validation_6', 'color_posts');
+            add_filter('gform_pre_submission_filter_6', 'color_posts');
+            add_filter('gform_admin_pre_render_6', 'color_posts');
+            function color_posts($form) {
+
+                foreach ($form['fields'] as &$field) {
+                    if ($field->type != 'select' || strpos($field->cssClass, 'gf_left_third funds') === false) {
+                        continue;
+                    }
+                    $choices = array();
+                    // $choices[] = array('text' => '--Operating Support for The Community Foundation', 'value' => 'Operating Support for The Community Foundation');
+                    // $choices[] = array('text' => '--General Endowment Leadership Fund at The Community Foundation', 'value' => 'General Endowment Leadership Fund at The Community Foundation');
+                    // $choices[] = array('text' => '--Special Interest Fund', 'value' => 'Special Interest Fund');
+                    // you can add additional parameters here to alter the posts that are retrieved
+                    // more info: [http://codex.wordpress.org/Template_Tags/get_posts](http://codex.wordpress.org/Template_Tags/get_posts)
+                    $terms = get_terms( array(
+                        'taxonomy' => 'funds_category',
+                        'hide_empty' => false,
+                    ) );
+                    // foreach($terms as $term){
+                        // $choices[] = array('text' => $term->name, 'value' => $term->name);
+                        $args = array('post_type' => 'funds', 'posts_per_page' => -1, 'numberposts' => -1, 'order' => 'ASC','orderby'=> 'title'
+                        // ,
+                        // 'tax_query'=>array(
+                        //     array(
+                        //         'taxonomy' => 'funds_category',
+                        //         // 'terms' => array($term->slug),
+                        //         'field' => 'slug',
+                        //         'operator' => 'IN',
+                        //     )
+                        // )
+                    
+                    );
+                        $posts = get_posts($args);
+                        foreach ($posts as $post) {
+                            $choices[] = array('text' => $post->post_title, 'value' => $post->ID);
+                        }
+                    // }
+                    
+                    
+                    
+
+                    // update 'Select a Post' to whatever you'd like the instructive option to be
+                    $field->placeholder = 'Select a Fund';
+                    $field->choices = $choices;
+                }
+
+                return $form;
+            }
+
+            add_action('gform_pre_submission', 'pre_submission_handler');
+
+//
+            function pre_submission_handler($form) {
+                unset($_POST['input_80']);
+                unset($_POST['input_83']);
+                unset($_POST['input_88']);
+                unset($_POST['input_92']);
+                unset($_POST['input_96']);
+                unset($_POST['input_100']);
+                unset($_POST['input_103']);
+                unset($_POST['input_108']);
+                $funds = [];
+                foreach ($form['fields'] as &$field) {
+                    if (!empty($_POST['input_73'])) {
+                        if ($field->id == 69) {
+                            $field->label = $_POST['input_73'];
+                        }
+                    }
+                    if (!empty($_POST['input_75'])) {
+                        if ($field->id == 74) {
+                            $field->label = $_POST['input_75'];
+                        }
+                    }
+                    if (!empty($_POST['input_81'])) {
+                        if ($field->id == 82) {
+                            $field->label = $_POST['input_81'];
+                        }
+                    }
+                    if (!empty($_POST['input_85'])) {
+                        if ($field->id == 86) {
+                            $field->label = $_POST['input_85'];
+                        }
+                    }
+                    if (!empty($_POST['input_89'])) {
+                        if ($field->id == 74) {
+                            $field->label = $_POST['input_90'];
+                        }
+                    }
+                    if (!empty($_POST['input_93'])) {
+                        if ($field->id == 74) {
+                            $field->label = $_POST['input_94'];
+                        }
+                    }
+                    if (!empty($_POST['input_97'])) {
+                        if ($field->id == 98) {
+                            $field->label = $_POST['input_97'];
+                        }
+                    }
+                    if (!empty($_POST['input_101'])) {
+                        if ($field->id == 102) {
+                            $field->label = $_POST['input_101'];
+                        }
+                    }
+                    if (!empty($_POST['input_105'])) {
+                        if ($field->id == 106) {
+                            $field->label = $_POST['input_105'];
+                        }
+                    }
+                    if (!empty($_POST['input_109'])) {
+                        if ($field->id == 110) {
+                            $field->label = $_POST['input_109'];
+                        }
+                    }
+                }
+//                echo "------------<pre>"; print_r($form);echo "</pre>";exit;
+            }
+
+            add_filter('gform_entry_field_value', 'category_names', 10, 4);
+
+//            add_filter( 'gform_entry_field_value', 'category_names', 10, 4 );
+            function category_names($value, $field, $lead, $form) {
+                foreach ($form['fields'] as &$field) {
+                    if (!empty($_POST['input_73'])) {
+                        if ($field->id == 73) {
+                            $field->label = 'test';
+                        }
+                    }
+                    if (!empty($_POST['input_75'])) {
+                        if ($field->id == 74) {
+                            $field->label = $_POST['input_75'];
+                        }
+                    }
+                    if (!empty($_POST['input_81'])) {
+                        if ($field->id == 82) {
+                            $field->label = $_POST['input_81'];
+                        }
+                    }
+                    if (!empty($_POST['input_85'])) {
+                        if ($field->id == 86) {
+                            $field->label = $_POST['input_85'];
+                        }
+                    }
+                    if (!empty($_POST['input_89'])) {
+                        if ($field->id == 74) {
+                            $field->label = $_POST['input_90'];
+                        }
+                    }
+                    if (!empty($_POST['input_93'])) {
+                        if ($field->id == 74) {
+                            $field->label = $_POST['input_94'];
+                        }
+                    }
+                    if (!empty($_POST['input_97'])) {
+                        if ($field->id == 98) {
+                            $field->label = $_POST['input_97'];
+                        }
+                    }
+                    if (!empty($_POST['input_101'])) {
+                        if ($field->id == 102) {
+                            $field->label = $_POST['input_101'];
+                        }
+                    }
+                    if (!empty($_POST['input_105'])) {
+                        if ($field->id == 106) {
+                            $field->label = $_POST['input_105'];
+                        }
+                    }
+                    if (!empty($_POST['input_109'])) {
+                        if ($field->id == 110) {
+                            $field->label = $_POST['input_109'];
+                        }
+                    }
+                }
+                return $value;
+//                if ($form['id'] != 104 || $field->id != 3)
+//                    return $value;
+//
+//                $newvalue = "";
+//                $categories = explode(',', $value);
+//
+//                foreach ($categories as $category) {
+//                    $new_value .= '<li>' . get_cat_name($category) . '</li>';
+//                }
+//
+//                return '<ul>' . $new_value . '</ul>';
+            }
+
+            //          
+            function my_custom_admin_head() {
+                echo '<script type="text/javascript">
+                
+                        jQuery(document).ready(function($){
+                        var funds=[];
+                            $(".entry-detail-view >tbody tr").each(function(){
+                            if($(this).html().indexOf("Select a Fund") >-1){
+                                funds.push($(this).next("tr").children("td").html());
+                            }
+                             });
+                             console.log(funds);
+                             var i=0;
+                             $(".entry-products tbody tr").each(function(){
+                                $(this).children("td").children(".product_name").html(funds[i]);
+                             i++;
+                             });
+                        });
+                      </script>';
+            }
+
+            add_action('admin_footer', 'my_custom_admin_head');
+            //// repeater gform code
+
+
+
+            add_filter( 'gform_form_post_get_meta_6', 'add_my_field' );	
+function add_my_field( $form ) {	
+    // Passing the form object with the field id.	
+    $fund_type_field_1 = GFAPI::get_field( $form, 73 );	
+    $fund_amount_field_1 = GFAPI::get_field( $form, 69 );	
+    // $fund_fims_field_1 = GFAPI::get_field( $form, 1014 );	
+    // Create a repeater for the team members and add the name and email fields as the fields to display inside the repeater.	
+    $fund_fields = GF_Fields::create( array(	
+        'type'             => 'repeater',	
+        'description'      => 'Maximum of 5 funds',	
+        'id'               => 1000, // The Field ID must be unique on the form	
+        'formId'           => $form['id'],	
+        'class'           => 'select2',	
+        'label'            => 'Fund & Gift Amounts',	
+        'addButtonText'    => 'Add Another Fund', // Optional	
+        'removeButtonText' => 'Remove Fund', // Optional	
+        'maxItems'         => 5, // Optional	
+        'isRequired'         => true, // Optional	
+        'pageNumber'       => 1, // Ensure this is correct	
+        'fields'           => array( $fund_type_field_1, $fund_amount_field_1 ), // Add the fields here.	
+    ) );	
+ 	
+    //$form['fields'][] = $team;	
+    array_splice( $form['fields'], 5, 0, array( $fund_fields ) );	
+ 	
+    return $form;	
+}	
+// Remove the field before the form is saved. Adjust your form ID	
+add_filter( 'gform_form_update_meta_6', 'remove_my_field', 10, 3 );	
+function remove_my_field( $form_meta, $form_id, $meta_name ) {	
+ 	
+    if ( $meta_name == 'display_meta' ) {	
+        // Remove the Repeater field: ID 1000	
+        $form_meta['fields'] = wp_list_filter( $form_meta['fields'], array( 'id' => 1000 ), 'NOT' );	
+    }	
+ 	
+    return $form_meta;	
+}	
+add_filter( 'gform_entry_list_columns', 'set_columns', 10, 6 );
+function set_columns( $table_columns, $form_id ){
+    $table_columns['field_id-73'] = 'Fund';
+    $table_columns['field_id-69'] = 'Amount';
+    return $table_columns;
+}
+add_filter( 'gform_entries_column_filter', 'change_column_data', 10, 5 );
+function change_column_data( $value, $form_id, $field_id, $entry, $query_string ) {
+    //only change the data when form id is 1 and field id is 2
+    $list=[];
+    if ( $form_id ==6 && ($field_id==73 || $field_id==69)) {
+        if(!empty($entry[1000])){
+            foreach($entry[1000] as $fundrow){
+                if(!empty($fundrow[73]) && $field_id==73){
+                    $f=get_posts(array('post_type' => 'funds', 'include'=>[$fundrow[73]]));
+                    if(!empty($f)){
+                        array_push($list, $f[0]->post_title);
+                    }
+                }
+                if(!empty($fundrow[69]) && $field_id==69 && $fundrow[69]!='$0.00'){
+                    array_push($list, $fundrow[69]);
+                }
+            }
+            if(!empty($list)){
+                return implode(',', $list);
+            }
+        }
+    }
+    return $value;
+}
+add_filter( 'gform_entry_field_value', 'fund_names', 10, 4 );
+function fund_names( $value, $field, $lead, $form ) {
+    
+    if ( $form['id'] == 6 && $field->id == 1000 ){
+        return;
+    }else
+    if ( $form['id'] == 6 && $field->id == 73 ){
+        $html="";
+        if(!empty($lead[1000])){
+            foreach($lead[1000] as $fundrow){
+
+                $html.='<div class="gfield_repeater_items">
+    <div class="gfield_repeater_item"><div class="gfield_repeater_cell"><div class="gfield_repeater_label">Fund</div><div class="gfield_repeater_value" style="color:rgba(117, 117, 117, 1);font-size: 14px">';
+if(!empty($fundrow[73])){
+    $f=get_posts(array('post_type' => 'funds', 'include'=>[$fundrow[73]]));
+    if(!empty($f)){
+        $html.=$f[0]->post_title;
+    }
+}
+$html.='</div></div><div class="gfield_repeater_cell"><div class="gfield_repeater_label">Amount:</div><div class="gfield_repeater_value" style="color:rgba(117, 117, 117, 1);font-size: 14px">'.$fundrow[69].'</div></div></div>
+</div>';
+
+            }
+        }
+         return $html;
+    }else{
+        return $value;
+    }
+}
+add_filter('gform_register_init_scripts', 'gform_my_function');	
+function gform_my_function($form) {	
+    $fund_id = $_GET['fund'];	
+    $amount = $_GET['amount'];	
+    $script = '(function($){' .	
+        'console.log("hellloo");	setTimeout(function(){
+        var fundTotal = 0;
+        $("#input_6_73-0").val('.$fund_id.').trigger("change");
+        if($("#input_6_69-0").length>0){	
+            $("#input_6_69-0").val('.$amount .'); 
+            $("#input_6_69-0").trigger("keyup"); 
+            $("#input_6_69-0").trigger("change"); 
+        }
+        $(".gfield_repeater_items .ginput_amount").each(function() {
+            var num = parseFloat($(this).val().replace("$", "").replace( /,/g, \'\'));
+            fundTotal += (num || 0);
+          });
+          $("#input_6_128").val(fundTotal.toFixed(2));
+          $("#input_6_128").change();
+          }, 1200);' .	
+    '})(jQuery);';	
+    GFFormDisplay::add_init_script($form['id'], 'gform_my_function', GFFormDisplay::ON_PAGE_RENDER, $script);	
+    return $form;	
+}	
+add_filter( 'gform_addon_pre_process_feeds_6', function ( $feeds, $entry ) {	
+    
+    // print_r($feeds); exit;
+    $intervalStr = strtolower($entry['17']);	
+    $startDate = $entry['55'];	
+    $endDate = $entry['56'];		
+if($intervalStr == 'monthly') {	
+  $intervalVal = '1';	
+}	
+if($intervalStr == 'quarterly') {	
+  $intervalVal = '3';	
+}	
+if($intervalStr == 'Annually') {	
+  $intervalVal = '12';	
+}	
+$ts1 = strtotime($startDate); 	
+$ts2 = strtotime($endDate);	
+$year1 = date('Y', $ts1);	
+$year2 = date('Y', $ts2);	
+$month1 = date('m', $ts1);	
+$month2 = date('m', $ts2);	
+$totalOccurrences = (($year2 - $year1) * 12) + ($month2 - $month1);	
+// $subscription->intervalLength = $intervalVal;	
+// $subscription->totalOccurrences = $totalOccurrences;
+foreach ( $feeds as &$feed ) {
+    $feed['meta']['billingCycle_unit'] = 'month';
+    $feed['meta']['billingCycle_length'] = $intervalVal;
+}
+   
+// echo "<pre>";print_r($feed); exit;
+return $feeds;	
+    
+}, 10, 5 );
+// add_filter( 'gform_authorizenet_subscription_pre_create', function ( $subscription, $form_data, $config, $form, $entry ) {	
+//     if ( $form['id'] == 6 ) { // Give Now Form Subscription	
+//         // print_r($entry); exit;
+//         $intervalStr = $entry['17'];	
+//         $startDate = $entry['55'];	
+//         $endDate = $entry['56'];	
+//     } else { // All other forms	
+//         return $subscription;	
+//     }	
+//     if($intervalStr == 'monthly') {	
+//       $intervalVal = '1';	
+//     }	
+//     if($intervalStr == 'quarterly') {	
+//       $intervalVal = '3';	
+//     }	
+//     if($intervalStr == 'Annually') {	
+//       $intervalVal = '12';	
+//     }	
+//     $ts1 = strtotime($startDate); 	
+//     $ts2 = strtotime($endDate);	
+//     $year1 = date('Y', $ts1);	
+//     $year2 = date('Y', $ts2);	
+//     $month1 = date('m', $ts1);	
+//     $month2 = date('m', $ts2);	
+//     $totalOccurrences = (($year2 - $year1) * 12) + ($month2 - $month1);	
+//     $subscription->intervalLength = $intervalVal;	
+//     $subscription->totalOccurrences = $totalOccurrences;	
+//     return $subscription;	
+        
+//   }, 10, 5 );	
+
+  function getFundsSearch(){
+    $args = array(
+     'post_type'=> 'funds',
+     'order'    => 'ASC',
+     'orderby'=> 'title',
+     'posts_per_page' => -1
+ ); 
+ $fundposts = get_posts($args);
+ ?>
+         </main>
+ <div class='search-dropdown'>
+    <select class="form-control select2" name='funds-s' id='funds-s'>
+            <option>Search Funds</option> 
+            <?php 
+            foreach($fundposts as $fundpost){
+                $hide_funds_page=get_field('hide_funds_page',$fundpost->ID );
+                $link=get_permalink($fundpost->ID);
+                if(!empty($hide_funds_page)){
+                    $link=home_url()."/test/?fund=".$fundpost->ID;
+                }
+                ?>
+                     <option value="<?php echo $link?>"><?php echo $fundpost->post_title?></option> 
+            <?php }
+            ?>
+         </select>
+    </div>
+    <script>
+    jQuery(document).ready(function($){
+     $('#funds-s').change(function(){
+         var href=$(this).val();
+         window.location.href=href;
+     });
+    });
+    </script><?php 
+  }
+  
+  function cptui_register_my_taxes() {
+
+	/**
+	 * Taxonomy: Categories.
+	 */
+
+	$labels = [
+		"name" => __( "Categories", "custom-post-type-ui" ),
+		"singular_name" => __( "Category", "custom-post-type-ui" ),
+	];
+
+	$args = [
+		"label" => __( "Categories", "custom-post-type-ui" ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"hierarchical" => true,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => [ 'slug' => 'funds_category', 'with_front' => true, ],
+		"show_admin_column" => true,
+		"show_in_rest" => true,
+		"rest_base" => "funds_category",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"show_in_quick_edit" => true,
+			];
+	register_taxonomy( "funds_category", [ "funds" ], $args );
+}
+add_action( 'init', 'cptui_register_my_taxes' );
+function cptui_register_my_taxes_funds_category() {
+
+	/**
+	 * Taxonomy: Categories.
+	 */
+
+	$labels = [
+		"name" => __( "Categories", "custom-post-type-ui" ),
+		"singular_name" => __( "Category", "custom-post-type-ui" ),
+	];
+
+	$args = [
+		"label" => __( "Categories", "custom-post-type-ui" ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"hierarchical" => true,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => [ 'slug' => 'funds_category', 'with_front' => true, ],
+		"show_admin_column" => true,
+		"show_in_rest" => true,
+		"rest_base" => "funds_category",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"show_in_quick_edit" => true,
+			];
+	register_taxonomy( "funds_category", [ "funds" ], $args );
+}
+add_action( 'init', 'cptui_register_my_taxes_funds_category' );
+add_action( 'init', 'exclude_custom_type_from_earch', 99 );
+function exclude_custom_type_from_earch() {
+global $wp_post_types;
+
+if ( post_type_exists( 'toolkit' ) ) {
+
+// exclude from search results
+$wp_post_types['toolkit']->exclude_from_search = true;
+}
+}
+
+add_action( 'pre_get_posts', 'my_pre_get_research' );
+function my_pre_get_research($query){
+    if(!empty($_POST['selectResearchCat'])){
+
+       //limit the filter to frontend, main query and archive pages
+       if($query->is_main_query() && !is_admin() && $query->is_archive && in_array ( $query->get('post_type'), array('research') )) {
+
+            $tax_query = array(
+                array(
+                    'taxonomy' => 'research_category',
+                    'field'    => 'slug',
+                    'terms'    => $_POST['selectResearchCat'],
+                ),
+            );
+            $query->set( 'tax_query', $tax_query );
+
+       }
+
+     }
+}
+
+add_action('acf/init', 'my_acf_op_init');
+function my_acf_op_init() {
+
+    // Check function exists.
+    if( function_exists('acf_add_options_page') ) {
+
+        // Register options page.
+        $option_page = acf_add_options_page(array(
+            'page_title'    => __('Research Page Settings'),
+            'menu_title'    => __('Research Page Settings'),
+            'menu_slug'     => 'research-page-settings',
+            'capability'    => 'edit_posts',
+            'redirect'      => false
+        ));
+    }
+}

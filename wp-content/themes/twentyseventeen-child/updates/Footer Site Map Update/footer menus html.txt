@@ -1,0 +1,47 @@
+<div class="upper-footer">
+        <div class="container-fluid text-center">
+            <div class="footer-logo upper-footer-col">
+                            </div>
+            <div class="upper-footer-col">
+                <div><nav class="menu-about-us-container" aria-label="Menu"><ul id="menu-about-us" class="menu"><li id="menu-item-625" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-625"><a href="https://cfsloco.local/about-us/">About Us</a></li>
+<li id="menu-item-882" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-882"><a href="https://cfsloco.local/about-us/board-of-directors/">Board of Directors</a></li>
+<li id="menu-item-626" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-626"><a href="https://cfsloco.local/about-us/finance-and-investment/">Finance &amp; Investment</a></li>
+<li id="menu-item-3682" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3682"><a href="https://cfsloco.local/publications-reports/">Publications</a></li>
+</ul></nav></div>            </div>
+            <div class="upper-footer-col">
+                <div><nav class="menu-donors-container" aria-label="Menu"><ul id="menu-donors" class="menu"><li id="menu-item-628" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-628"><a href="https://cfsloco.local/donors/">Donors</a></li>
+<li id="menu-item-629" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-629"><a href="https://cfsloco.local/giving-options-2/">Giving  Options</a></li>
+<li id="menu-item-627" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-627"><a href="https://cfsloco.local/donor-stories/">Donor Stories</a></li>
+</ul></nav></div>            </div><div class="upper-footer-col">
+                <div><nav class="menu-advisors-container" aria-label="Menu"><ul id="menu-advisors" class="menu"><li id="menu-item-631" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-631"><a href="https://cfsloco.local/advisors/">Advisors</a></li>
+<li id="menu-item-988" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-988"><a href="https://cfsloco.local/how-we-can-help/">How We Can Help</a></li>
+<li id="menu-item-634" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-634"><a href="https://cfsloco.local/why-use-cfsloco/">Why Use CFSLOCO</a></li>
+<li id="menu-item-706" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-706"><a href="https://cfsloco.local/toolkit/">Our Charitable Funds</a></li>
+<li id="menu-item-705" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-705"><a href="https://cfsloco.local/faqs-other-resources/">FAQs &amp; Other Resources</a></li>
+</ul></nav></div>            </div><div class="upper-footer-col">
+                <div><nav class="menu-nonprofits-container" aria-label="Menu"><ul id="menu-nonprofits" class="menu"><li id="menu-item-639" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-639"><a href="https://cfsloco.local/nonprofits-2/">Nonprofits</a></li>
+<li id="menu-item-636" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-636"><a href="https://cfsloco.local/awards/">Awards</a></li>
+<li id="menu-item-635" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-635"><a href="https://cfsloco.local/agency-funds/">Agency  Funds</a></li>
+</ul></nav></div>            </div>
+            <div class="upper-footer-col">
+                <div><nav class="menu-students-container" aria-label="Menu"><ul id="menu-students" class="menu"><li id="menu-item-651" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-651"><a href="https://cfsloco.local/scholarships/">Scholarships</a></li>
+<li id="menu-item-640" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-640"><a href="https://cfsloco.local/faqs/">FAQs</a></li>
+<li id="menu-item-641" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-641"><a href="https://cfsloco.local/scholarship-stories/">Scholarship Stories</a></li>
+</ul></nav></div>            </div><div class="upper-footer-col">
+                <div><nav class="menu-impact-container" aria-label="Menu"><ul id="menu-impact" class="menu"><li id="menu-item-643" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-643"><a href="https://cfsloco.local/impact/">Impact</a></li>
+<li id="menu-item-2928" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2928"><a href="https://cfsloco.local/womens-legacy-fund/">Women’s Legacy Fund</a></li>
+<li id="menu-item-1631" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1631"><a href="https://cfsloco.local/field-of-interest-funds/">Growing Together: An LGBTQ+ Fund</a></li>
+<li id="menu-item-1632" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1632"><a href="https://cfsloco.local/publications-reports/">Publications</a></li>
+<li id="menu-item-6551" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6551"><a href="https://cfsloco.local/about-us/celebrating-25-years/">Celebrating 25 Years</a></li>
+</ul></nav></div>            </div>
+            <div class="upper-footer-col">
+                <div><nav class="menu-quick-links-container" aria-label="Menu"><ul id="menu-quick-links" class="menu"><li id="menu-item-99" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-99"><a href="#">Quick Links</a></li>
+<li id="menu-item-95" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-95"><a href="/news-and-events/">News &amp; Events</a></li>
+<li id="menu-item-96" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-96"><a href="/fund-donation/">Give Now</a></li>
+<li id="menu-item-97" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-97"><a href="http://www.realestateslo.org/">Real Estate Foundation</a></li>
+<li id="menu-item-98" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-98"><a href="/2018/10/25/how-and-what-to-give/">How &amp; What to Give</a></li>
+<li id="menu-item-6515" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6515"><a href="https://cfsloco.local/blog/">Blog</a></li>
+</ul></nav></div>            </div>
+
+        </div>
+    </div>
