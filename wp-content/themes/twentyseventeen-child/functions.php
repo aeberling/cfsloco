@@ -2351,6 +2351,429 @@ function cfsloco_run_board_import() {
 /* >>>>>> END: OUR TEAM PAGE (CPT + ACF + Import Tools) <<<<<<       */
 /* ================================================================= */
 
+/* ================================================================= */
+/* >>>>>> START: NEWS & EVENTS → POSTS MIGRATION (ACF Fields) <<<<<< */
+/* ACF fields for standard posts with 'news-events' category         */
+/* Mirrors the fields from the news_and_events CPT                   */
+/* ================================================================= */
+add_action('acf/include_fields', 'cfsloco_register_news_events_post_fields');
+function cfsloco_register_news_events_post_fields() {
+    if (!function_exists('acf_add_local_field_group')) {
+        return;
+    }
+
+    acf_add_local_field_group(array(
+        'key' => 'group_news_events_posts',
+        'title' => 'News & Events Fields',
+        'fields' => array(
+            array(
+                'key' => 'field_ne_display_type',
+                'label' => 'Display Type',
+                'name' => 'display_type',
+                'type' => 'radio',
+                'instructions' => '',
+                'required' => 0,
+                'choices' => array(
+                    'News' => 'News',
+                    'Event' => 'Event',
+                ),
+                'allow_null' => 0,
+                'other_choice' => 0,
+                'save_other_choice' => 0,
+                'default_value' => 'News',
+                'layout' => 'vertical',
+                'return_format' => 'value',
+            ),
+            array(
+                'key' => 'field_ne_event_month',
+                'label' => 'Event Month',
+                'name' => 'event_month',
+                'type' => 'text',
+                'instructions' => '',
+                'required' => 1,
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_ne_display_type',
+                            'operator' => '==',
+                            'value' => 'Event',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_ne_event_date',
+                'label' => 'Event Date',
+                'name' => 'event_date',
+                'type' => 'text',
+                'instructions' => '',
+                'required' => 1,
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_ne_display_type',
+                            'operator' => '==',
+                            'value' => 'Event',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_ne_event_icon',
+                'label' => 'Event Icon',
+                'name' => 'event_icon',
+                'type' => 'image',
+                'instructions' => '',
+                'required' => 1,
+                'return_format' => 'url',
+                'preview_size' => 'thumbnail',
+                'library' => 'all',
+                'min_width' => '',
+                'min_height' => '',
+                'min_size' => '',
+                'max_width' => '',
+                'max_height' => '',
+                'max_size' => '',
+                'mime_types' => '',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_ne_display_type',
+                            'operator' => '==',
+                            'value' => 'News',
+                        ),
+                    ),
+                ),
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param'    => 'post_type',
+                    'operator' => '==',
+                    'value'    => 'post',
+                ),
+                array(
+                    'param'    => 'post_category',
+                    'operator' => '==',
+                    'value'    => 'category:news-events',
+                ),
+            ),
+        ),
+        'position' => 'normal',
+        'style'    => 'default',
+        'label_placement' => 'top',
+    ));
+}
+/* ================================================================= */
+/* >>>>>> END: NEWS & EVENTS → POSTS MIGRATION (ACF Fields) <<<<<<   */
+/* ================================================================= */
+
+/* ================================================================= */
+/* >>>>>> START: MIGRATE NEWS_AND_EVENTS → POSTS TOOL <<<<<<<<<<<<<<< */
+/* Tools > Migrate News & Events                                      */
+/* Copies news_and_events CPT posts to standard posts under           */
+/* the 'news-events' category, including ACF fields & featured images */
+/* ================================================================= */
+add_action('admin_menu', 'cfsloco_migrate_news_events_menu');
+function cfsloco_migrate_news_events_menu() {
+    add_management_page(
+        'Migrate News & Events',
+        'Migrate News & Events',
+        'manage_options',
+        'migrate-news-events',
+        'cfsloco_migrate_news_events_page'
+    );
+}
+
+/**
+ * Render the Migrate News & Events admin page.
+ */
+function cfsloco_migrate_news_events_page() {
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+
+    echo '<div class="wrap">';
+    echo '<h1>Migrate News &amp; Events → Posts</h1>';
+    echo '<p>This tool copies <strong>news_and_events</strong> CPT posts to standard <strong>Posts</strong> under the <strong>News &amp; Events</strong> category, including all ACF fields (display_type, event_month, event_date, event_icon), featured images, and content.</p>';
+
+    // Handle single test migration
+    if (isset($_POST['cfsloco_migrate_one']) && check_admin_referer('cfsloco_migrate_ne_nonce')) {
+        cfsloco_run_news_events_migration(1);
+        echo '</div>';
+        return;
+    }
+
+    // Handle full migration
+    if (isset($_POST['cfsloco_migrate_all']) && check_admin_referer('cfsloco_migrate_ne_nonce')) {
+        cfsloco_run_news_events_migration(0);
+        echo '</div>';
+        return;
+    }
+
+    // Preview — show all news_and_events posts
+    $args = array(
+        'post_type'      => 'news_and_events',
+        'posts_per_page' => -1,
+        'post_status'    => array('publish', 'draft', 'pending', 'private'),
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    );
+    $query = new WP_Query($args);
+    $posts = $query->posts;
+
+    if (empty($posts)) {
+        echo '<div class="notice notice-warning"><p>No news_and_events posts found to migrate.</p></div>';
+        echo '</div>';
+        return;
+    }
+
+    // Check how many are already migrated
+    $already_migrated = 0;
+    foreach ($posts as $ne_post) {
+        $existing = get_posts(array(
+            'post_type'   => 'post',
+            'meta_key'    => '_migrated_from_ne_id',
+            'meta_value'  => $ne_post->ID,
+            'post_status' => 'any',
+            'numberposts' => 1,
+        ));
+        if (!empty($existing)) {
+            $already_migrated++;
+        }
+    }
+
+    echo '<h2>Preview — ' . count($posts) . ' news_and_events posts found</h2>';
+    if ($already_migrated > 0) {
+        echo '<div class="notice notice-info"><p>' . $already_migrated . ' post(s) already migrated (will be skipped).</p></div>';
+    }
+
+    echo '<table class="widefat striped" style="max-width:1200px;">';
+    echo '<thead><tr><th>ID</th><th>Title</th><th>Date</th><th>Status</th><th>Type</th><th>Event Icon</th><th>Featured Image</th><th>Migrated?</th></tr></thead>';
+    echo '<tbody>';
+
+    foreach ($posts as $ne_post) {
+        $display_type = get_field('display_type', $ne_post->ID);
+        $event_icon = get_field('event_icon', $ne_post->ID);
+        $thumb_id = get_post_thumbnail_id($ne_post->ID);
+
+        // Check if already migrated
+        $existing = get_posts(array(
+            'post_type'   => 'post',
+            'meta_key'    => '_migrated_from_ne_id',
+            'meta_value'  => $ne_post->ID,
+            'post_status' => 'any',
+            'numberposts' => 1,
+        ));
+        $is_migrated = !empty($existing);
+
+        echo '<tr' . ($is_migrated ? ' style="opacity:0.5;"' : '') . '>';
+        echo '<td>' . $ne_post->ID . '</td>';
+        echo '<td><strong>' . esc_html($ne_post->post_title) . '</strong></td>';
+        echo '<td>' . get_the_date('Y-m-d', $ne_post->ID) . '</td>';
+        echo '<td>' . $ne_post->post_status . '</td>';
+        echo '<td>' . esc_html($display_type ?: '—') . '</td>';
+        echo '<td>' . ($event_icon ? '<img src="' . esc_url($event_icon) . '" style="width:30px;height:30px;object-fit:cover;">' : '—') . '</td>';
+        echo '<td>' . ($thumb_id ? '<img src="' . esc_url(wp_get_attachment_image_url($thumb_id, 'thumbnail')) . '" style="width:30px;height:30px;object-fit:cover;">' : '—') . '</td>';
+        echo '<td>' . ($is_migrated ? 'Yes (ID: ' . $existing[0]->ID . ')' : 'No') . '</td>';
+        echo '</tr>';
+    }
+
+    echo '</tbody></table>';
+
+    // Action buttons
+    echo '<form method="post" style="margin-top:20px;">';
+    wp_nonce_field('cfsloco_migrate_ne_nonce');
+
+    echo '<p>';
+    echo '<button type="submit" name="cfsloco_migrate_one" value="1" class="button button-secondary button-hero" style="margin-right:10px;">Test: Migrate 1 Post</button>';
+    echo '<button type="submit" name="cfsloco_migrate_all" value="1" class="button button-primary button-hero">Migrate All Posts</button>';
+    echo '</p>';
+    echo '<p class="description">Test with one post first to verify everything copies correctly. Already-migrated posts will be skipped.</p>';
+    echo '</form>';
+
+    echo '</div>';
+    wp_reset_postdata();
+}
+
+/**
+ * Run the migration — copy news_and_events to standard posts.
+ *
+ * @param int $limit Number of posts to migrate (0 = all).
+ */
+function cfsloco_run_news_events_migration($limit = 0) {
+    // Get the news-events category
+    $category = get_category_by_slug('news-events');
+    if (!$category) {
+        echo '<div class="notice notice-error"><p>Category "news-events" not found. Please create it first.</p></div>';
+        return;
+    }
+    $category_id = $category->term_id;
+
+    // Get news_and_events posts
+    $args = array(
+        'post_type'      => 'news_and_events',
+        'posts_per_page' => -1,
+        'post_status'    => array('publish', 'draft', 'pending', 'private'),
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    );
+    $query = new WP_Query($args);
+    $posts = $query->posts;
+
+    if (empty($posts)) {
+        echo '<div class="notice notice-warning"><p>No news_and_events posts found to migrate.</p></div>';
+        return;
+    }
+
+    $migrated = 0;
+    $skipped = 0;
+    $errors = array();
+    $migrated_posts = array();
+
+    foreach ($posts as $ne_post) {
+        // Check limit
+        if ($limit > 0 && $migrated >= $limit) {
+            break;
+        }
+
+        // Skip if already migrated
+        $existing = get_posts(array(
+            'post_type'   => 'post',
+            'meta_key'    => '_migrated_from_ne_id',
+            'meta_value'  => $ne_post->ID,
+            'post_status' => 'any',
+            'numberposts' => 1,
+        ));
+        if (!empty($existing)) {
+            $skipped++;
+            continue;
+        }
+
+        // Create the new post
+        $new_post_id = wp_insert_post(array(
+            'post_type'    => 'post',
+            'post_title'   => $ne_post->post_title,
+            'post_content' => $ne_post->post_content,
+            'post_excerpt' => $ne_post->post_excerpt,
+            'post_status'  => $ne_post->post_status,
+            'post_date'    => $ne_post->post_date,
+            'post_date_gmt'=> $ne_post->post_date_gmt,
+            'post_author'  => $ne_post->post_author,
+            'post_name'    => $ne_post->post_name,
+            'comment_status'=> $ne_post->comment_status,
+            'ping_status'  => $ne_post->ping_status,
+        ));
+
+        if (is_wp_error($new_post_id)) {
+            $errors[] = $ne_post->post_title . ': ' . $new_post_id->get_error_message();
+            continue;
+        }
+
+        // Assign the news-events category
+        wp_set_post_categories($new_post_id, array($category_id));
+
+        // Copy ACF fields using raw meta values + new field reference keys
+        $acf_field_map = array(
+            'display_type' => 'field_ne_display_type',
+            'event_month'  => 'field_ne_event_month',
+            'event_date'   => 'field_ne_event_date',
+            'event_icon'   => 'field_ne_event_icon',
+        );
+        foreach ($acf_field_map as $field_name => $field_key) {
+            $raw_value = get_post_meta($ne_post->ID, $field_name, true);
+            if ($raw_value !== '' && $raw_value !== false) {
+                update_post_meta($new_post_id, $field_name, $raw_value);
+                update_post_meta($new_post_id, '_' . $field_name, $field_key);
+            }
+        }
+
+        // Copy featured image
+        $thumbnail_id = get_post_thumbnail_id($ne_post->ID);
+        if ($thumbnail_id) {
+            set_post_thumbnail($new_post_id, $thumbnail_id);
+        }
+
+        // Store reference to original post for tracking
+        update_post_meta($new_post_id, '_migrated_from_ne_id', $ne_post->ID);
+
+        $migrated++;
+        $migrated_posts[] = array(
+            'old_id'    => $ne_post->ID,
+            'new_id'    => $new_post_id,
+            'title'     => $ne_post->post_title,
+        );
+    }
+
+    wp_reset_postdata();
+
+    // Results
+    if ($migrated > 0) {
+        echo '<div class="notice notice-success"><p><strong>Migration complete!</strong></p></div>';
+    } else {
+        echo '<div class="notice notice-info"><p>No new posts were migrated.</p></div>';
+    }
+
+    echo '<ul style="font-size:14px;">';
+    echo '<li>Migrated: <strong>' . $migrated . '</strong> post(s)</li>';
+    if ($skipped > 0) {
+        echo '<li>Skipped (already migrated): <strong>' . $skipped . '</strong></li>';
+    }
+    if (!empty($errors)) {
+        echo '<li style="color:red;">Errors: <strong>' . count($errors) . '</strong>';
+        echo '<ul>';
+        foreach ($errors as $err) {
+            echo '<li>' . esc_html($err) . '</li>';
+        }
+        echo '</ul></li>';
+    }
+    echo '</ul>';
+
+    // Show migrated posts detail
+    if (!empty($migrated_posts)) {
+        echo '<h3>Migrated Posts</h3>';
+        echo '<table class="widefat striped" style="max-width:1000px;">';
+        echo '<thead><tr><th>Original ID</th><th>New Post ID</th><th>Title</th><th>ACF Fields</th><th>Featured Image</th><th>Actions</th></tr></thead>';
+        echo '<tbody>';
+
+        foreach ($migrated_posts as $mp) {
+            $display_type = get_field('display_type', $mp['new_id']);
+            $event_icon = get_field('event_icon', $mp['new_id']);
+            $thumb_id = get_post_thumbnail_id($mp['new_id']);
+
+            echo '<tr>';
+            echo '<td>' . $mp['old_id'] . '</td>';
+            echo '<td>' . $mp['new_id'] . '</td>';
+            echo '<td><strong>' . esc_html($mp['title']) . '</strong></td>';
+            echo '<td>' . esc_html($display_type ?: '—') . '</td>';
+            echo '<td>' . ($thumb_id ? 'Yes' : 'No') . '</td>';
+            echo '<td>';
+            echo '<a href="' . get_edit_post_link($mp['new_id']) . '" class="button button-small" target="_blank">Edit New Post</a> ';
+            echo '<a href="' . get_permalink($mp['new_id']) . '" class="button button-small" target="_blank">View</a>';
+            echo '</td>';
+            echo '</tr>';
+        }
+
+        echo '</tbody></table>';
+    }
+
+    echo '<p style="margin-top:15px;"><a href="' . admin_url('tools.php?page=migrate-news-events') . '" class="button">← Back to Migration Tool</a></p>';
+}
+/* ================================================================= */
+/* >>>>>> END: MIGRATE NEWS_AND_EVENTS → POSTS TOOL <<<<<<<<<<<<<<<<< */
+/* ================================================================= */
+
 //ini_set('display_errors', '0');
 //ini_set('display_startup_errors', '0');
 //error_reporting(E_ALL);

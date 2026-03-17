@@ -206,12 +206,12 @@ console.log('no');
 				}
             });
             $('.support-fund').find('input').prop('disabled', '');
-            <?php if($_GET['fund']==5147){?>
+            <?php if(!empty($_GET['fund']) && $_GET['fund']==5147){?>
             $('#field_11_55').find('input').prop('disabled', '').prop('readonly', true).removeClass('datepicker');
             $('#field_11_56').find('input').prop('disabled', '').prop('readonly', true).removeClass('datepicker');
          <?php }?>
         }, 3000);
-        <?php if($_GET['fund']==5147){?>
+        <?php if(!empty($_GET['fund']) &&  $_GET['fund']==5147){?>
         $('#label_11_13_1').click(function(){
              setTimeout(function() { 
                 $('#field_11_55').find('input').prop('disabled', '').prop('readonly', true).removeClass('datepicker');
@@ -243,7 +243,7 @@ console.log('no');
         
         
         $('.select2').select2();
-        <?php if($_GET['fund']!=5147){?>
+        <?php if(!empty($_GET['fund']) && $_GET['fund']!=5147){?>
         if($('.datepicker').length>0){
             $('.datepicker').datepicker();
             $(document).on('keydown','.datepicker', function(){

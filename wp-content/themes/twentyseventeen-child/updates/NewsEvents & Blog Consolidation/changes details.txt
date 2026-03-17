@@ -1,0 +1,10 @@
+they want to merge all the of the blog and news & events content into one. So we'll probably need to migrate news & events to the posts and be able to differentiate the two with categories or something. Can you evaluate if there are any fields with news & events which are different then posts so we can determine the best path forward to merge the two. 
+
+
+
+Here is the clients comments we'll need to find a good way of making these updates at the right time while keeping on the live site so let's plan out before you do anything:
+
+We would like to somehow combine the blogs/news & Events into one format and call it “Foundation Updates” – our hope is that it can include the below features and we can transition the current content in both accordingly.
+We like the feature where its included on our home page at the bottom as the most recent updates
+We still want it to be linked under quick links and the ability to link it somewhere on our menu
+When you click on the “foundation update” we want it to populate all the historical content on the side – from both blog and news and events, so however is best to merge into one space
