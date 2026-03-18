@@ -1775,6 +1775,53 @@ i.far.fa-file-pdf {
     color: #2f8992;
     font-weight: normal;
 }
+
+/* Blog page styles (matching News & Events archive) */
+.blog h2{
+    font-size: 28px;
+    font-weight: normal;
+    font-family: 'Open Sans', sans-serif;
+}
+.blog h2 a{
+    text-decoration: none !important;
+}
+.blog div#primary{
+    margin-top: 5px;
+}
+.blog section#search-2 button.search-submit{
+    top: 0px;
+    bottom: 0px;
+}
+.blog section#search-2 svg.icon{
+    top: -1px;
+}
+
+/* News & Events category styles (migrated from CPT) */
+.category-news-events h2{
+    font-size: 28px;
+    font-weight: normal;
+    font-family: 'Open Sans', sans-serif;
+}
+.category-news-events h2 a{
+    text-decoration: none !important;
+}
+.category-news-events div#primary{
+    margin-top: 5px;
+}
+.category-news-events section#search-2 button.search-submit{
+    top: 0px;
+    bottom: 0px;
+}
+.category-news-events section#search-2 svg.icon{
+    top: -1px;
+}
+.category-news-events.single-post .entry-title {
+    font-size: 28px;
+    font-family: 'Open Sans', sans-serif;
+    color: #2f8992;
+    font-weight: normal;
+}
+
 .learn-more-link i.far.fa-file-pdf {
     color: white;
 }

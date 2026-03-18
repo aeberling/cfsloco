@@ -263,10 +263,17 @@ get_header();
                         <div class="owl-carousel owl-theme rvl-up">
                             <?php
                             $args = array(
-                                'post_type' => 'news_and_events',
+                                'post_type' => 'post',
                                 'posts_per_page' => 10,
                                 'orderby' => 'date',
                                 'order' => 'ASC',
+                                'tax_query' => array(
+                                    array(
+                                        'taxonomy' => 'category',
+                                        'field'    => 'slug',
+                                        'terms'    => 'news-events',
+                                    ),
+                                ),
                             );
                             $query = new WP_Query($args);
                             while ($query->have_posts()) : $query->the_post();

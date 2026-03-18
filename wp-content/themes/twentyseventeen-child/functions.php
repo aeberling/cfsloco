@@ -1464,40 +1464,6 @@ function add_custom_js_to_footer() {
 </style>
 <?php 
 }
-add_filter('post_link', 'custom_news_events_post_link', 10, 3);
-function custom_news_events_post_link($permalink, $post, $leavename) {
-
-    if ($post->post_type !== 'post') {
-        return $permalink;
-    }
-
-    $categories = get_the_category($post->ID);
-
-    if (!empty($categories)) {
-        foreach ($categories as $category) {
-            if ($category->slug === 'news-events') {
-                return home_url('/news-events/' . $post->post_name . '/');
-            }
-        }
-    }
-
-    return $permalink;
-}
-add_action('init', function () {
-    add_rewrite_rule(
-        '^news-events/([^/]+)/?$',
-        'index.php?post_type=post&name=$matches[1]',
-        'top'
-    );
-});
-add_action('template_redirect', function () {
-    if (get_query_var('name') && strpos($_SERVER['REQUEST_URI'], '/news-events/') !== false) {
-        global $wp_query;
-        $wp_query->is_single = true;
-        $wp_query->is_singular = true;
-        $wp_query->is_404 = false;
-    }
-});
 /* ================================================================= */
 /* >>>>>> START: OUR TEAM PAGE (CPT + ACF + Import Tools) <<<<<<     */
 /* Copy everything between START and END to migrate to live site.    */
