@@ -52,11 +52,7 @@ get_header();
                 /* Start the Loop */
                 while (have_posts()) : the_post();
 
-                    if($count > 0) {
-                    	get_template_part('template-parts/post/content-news', get_post_format());
-                    } else {
-                   	 	get_template_part('template-parts/post/content', get_post_format());
-                    }
+                    get_template_part('template-parts/post/content-foundation-updates');
 					$count++;
                 endwhile;
 
