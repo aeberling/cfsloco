@@ -11,7 +11,8 @@ get_header();
 $placeholder_img = 'https://placehold.co/400x400/e8e8e8/666?text=Photo';
 
 /**
- * Single query for ALL team members (staff + board), sorted by team_order.
+ * Single query for ALL team members (staff + board), sorted by menu_order.
+ * menu_order is set via the drag-and-drop admin pages (Our Team > Sort Staff / Sort Board).
  * Results are split into sections in PHP to avoid duplicate WP_Query calls.
  */
 $all_team_query = new WP_Query(array(
@@ -24,8 +25,7 @@ $all_team_query = new WP_Query(array(
             'terms'    => array('staff', 'board-of-directors'),
         ),
     ),
-    'meta_key'  => 'team_order',
-    'orderby'   => 'meta_value_num',
+    'orderby'   => 'menu_order',
     'order'     => 'ASC',
 ));
 
