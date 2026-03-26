@@ -11,6 +11,20 @@ function theme_enqueue_styles() {
 
 add_theme_support('post-thumbnails');
 
+/* Make Foundation Updates page template render like the blog page:
+   - 'has-sidebar' enables content + sidebar two-column layout
+   - 'blog' applies blog-specific post styling (spacing, meta, etc.)
+   - remove 'page-two-column' which causes entry-header/content to split side-by-side
+   Priority 99 ensures this runs AFTER the parent theme's body_class filter. */
+add_filter('body_class', function ($classes) {
+    if (is_page_template('page-foundation-updates.php')) {
+        $classes[] = 'has-sidebar';
+        $classes[] = 'blog';
+        $classes = array_values(array_diff($classes, array('page-two-column', 'page-one-column', 'page')));
+    }
+    return $classes;
+}, 99);
+
 function custom_widgets_init() {
     register_sidebar(array(
         'name' => __('Header Logo', 'cfsloco'),
